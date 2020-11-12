@@ -9,23 +9,25 @@
 
   <div class="row">
     <div class="col-md-12">
-      <h2>Current Location: {{current_location}}</h2>
+      <h2>Last Updated at: {{data[0]}}</h2>
+      <h2>Stop Name: {{data[1]}}</h2>
       <table class="table">
         <thead>
-        <tr>
+          <tr>
             <th scope="col">Bus Number</th>
             <th scope="col">Destination</th>
-            <th scope="col">Next</th>
-            <th scope="col"></th>
-        </tr>
+            <th scope="col">Next (minutes)</th>
+          </tr>
+          
         </thead>
         <tbody>
-            <tr>
-                <td>86</td>
-                <td>86</td>
-                <td>86</td>
+          {% for item in data[2] %}
+          <tr>
+                <td>{{item["line"]}}</td>
+                <td>{{item["direction"]}}</td>
+                <td>{{item["timeDiff"]}}</td>
             </tr>
-
+            {% endfor %}
         </tbody>
     </table>
     </div>

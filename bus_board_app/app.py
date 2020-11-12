@@ -4,6 +4,8 @@ from flask import Flask, render_template, request, redirect
 
 from bus_board_app.flask_config import Config
 
+from bus_board_app.services.transport_serivce import getLiveBusForATCO
+
 app = Flask(__name__)
 app.config.from_object(Config)
 
@@ -14,7 +16,8 @@ def index():
 
 @app.route('/')
 def home():
-    return render_template('index.html',current_location="NW5 1TL")
+    result = getLiveBusForATCO()
+    return render_template('index.html', data=result)
 
 
 if __name__ == '__main__':

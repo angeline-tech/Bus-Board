@@ -14,7 +14,7 @@ def index():
 
 @app.route('/')
 def home():
-    return render_template('index.html',data={})
+    return render_template('index.html',current_location="NW5 1TL")
 
 
 if __name__ == '__main__':
